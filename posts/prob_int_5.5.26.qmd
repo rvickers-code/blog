@@ -1,0 +1,91 @@
+---
+title: "The Interpretation of Probability Theory"
+format: html
+editor: visual
+---
+
+Sometimes articles/books/people say that probabilities have an objective existence, sometimes they say that they just measure our uncertainty.
+
+When analysing data, the methods we use and therefore the insights we draw and decisions we make, depend on what we think a probability represents. The prevailing interpretation of quantum mechanics is that when you measure a system, there are many possible results of that measurement, each with a given probability that we can calculate.
+
+Therefore the meaning of probabilities has both commercial and profound implications, so in this article I briefly explain my position, and hope to move you slightly towards it. There are of course many points I could expand upon, and many issues not touched on here, but I want to keep this to a less than ten minute read.
+
+Articles/books/people don't usually explicitly state their interpretation of probability, but from what I can tell the most common interpretation of a probability is as a long term frequency: if you repeat a trial a large number of times, the probability of an event represents the limiting frequency of that event, as the number of trials tends to infinity. This means probabilities describe a property of the system in question and are to be estimated as best we can.
+
+In so far as the universe is deterministic, exactly repeating a trial will give exactly the same result, making long term frequency 1 for the inevitable result and 0 for all other outcomes. It seems that for the long term frequency view to make sense we need some non-determinism (fundamental randomness) in each trial, or that the trials are not exactly repeated (so that variation in initial conditions gives the variation in outcome).
+
+Consider tossing a coin. A coin spinning through the air and landing on a table is a fully determined physical system, so if we know the initial position, velocity, orientation, angular velocity and friction with the table it lands on, there are differential equations we can solve that will exactly predict how it will land; there is nothing random about each trial.
+
+So it would be possible to design a machine to predictably toss a coin, and with this machine we could choose any long term fraction of the tosses that result in heads. Nobody would call this coin tossing random any more, so it seems that it is the lack of knowledge/control over the precise initial conditions that result in us calling human coin tosses random. The same can be said for dice rolls, and (if we control the precise details of the shuffling) drawing cards from a deck.
+
+Many scientists take the Copenhagen interpretation of quantum mechanics, which states that the results of measurements of extremely small objects (molecules and smaller) are non-deterministic. This an on-going debate however, with many scientists taking the many-worlds view, which is fully deterministic. Also, what about free will - are our minds purely a function of our brains, which are themselves deterministic systems? If not, could free will be the source of randomness which limits our abilities of prediction to long term frequencies?
+
+My point is not to take a stance on the interpretation of quantum mechanics or the existence of free will, but to draw attention to the fact that if we say something is "fundamentally random", or that exactly repeating a trial could give a different outcome, we are actually taking a stance on some very difficult philosophical/scientific issues. Surely we don't have to make our minds up about this in order to interpret the statement "this policyholder has a 5% chance of making a claim in the coming year"?
+
+Everyone is happy to talk of the probability of a dice roll, because it is in the future, undetermined (unless the universe is deterministic, in which case future dice rolls are determined). But when outcomes are already fixed but just unknown, most sources in my experience would not speak of the probability of the conceivable outcomes. This comes up mostly in the inference of parameters - the parameter is the same in each trial so it is fixed but unknown. Indeed, from a pure maths perspective only random variables (functions) can have probability densities, not parameters (just real numbers).
+
+But this seems to be sadly restrictive - it certainly would be useful to quantify our uncertainty in propositions that are determined but unknown. Confidence Intervals (CIs) are used to solve this kind of problem, but in my opinion they have a very awkward interpretation. We have to learn to avoid saying what we really want to say ("the parameter of interest has a 95% probability to be in a certain range") and say instead that "the procedure we used to calculate the CI will result in an interval containing the true value 95% of the time" (which is surely a statement about the universe: if you repeat the experiment, the long term frequency will take a certain value).
+
+Pure maths (from my reading of Wikipedia, textbooks, lecture courses) seems to most strongly align with the long term frequency view of probability, usually justified by the law of large numbers. This is because it immediately follows from the law of large numbers that:
+
+| For a sequence of independent, identically distributed random variables, the fraction of the r.v.s falling in any particular interval converges, with probability 1, to the probability of any individual variable falling in that interval.
+
+The issue is that you have to already know what probabilities are to interpret what "converges, with probability 1" means. This has a well-defined, abstract notion within the maths, but mapping it to a non-abstract concept requires thinking from outside mathematics.
+
+Probabilities representing long term frequencies are clearly consistent here (the theorem is almost true by definition from this view), but this is a reason for using normed measure theory for modelling long term frequencies, not evidence that trials will have stable long term frequencies (which is a scientific question).
+
+The main rules of probability theory, like $P(A \text{ and } B) = P(A)P(B|A)$, were well known long before it was axiomatised. Indeed, this is a definition (of conditional probability) in pure maths, not a deduction. This suggests there is something that just makes sense about the rules of probability that allows them to be divined without axiomatic basis by people like Pascal and Fermat; they just work for the kinds of problem they were addressing.
+
+I see pure maths as reverse engineering those already existing rules by coming up with the minimal assumptions that imply those rules (equivalently, the most general objects that satisfy them). This is clearly useful, but the question remains: why do we have those rules to begin with? Are long term frequencies the only entities that satisfy rules like $P(A \text{ or } B) = P(A)+P(B)-P(A \text{ and }B)$?
+
+------------------------------------------------------------------------
+
+I became convinced of a particular interpretation of probability theory when I read *Probability Theory: The Logic of Science* by E. T. Jaynes. In it, he starts from the question: how can we we be precise about our degree of confidence in a proposition? Formal logic is very useful when we can be perfectly sure of whether propositions are true or false, but how should we think if we aren't perfectly sure? Jaynes lays down three rules that this new theory of plausibility must satisfy:
+
+1.  Degrees of belief are represented as real numbers. (I will use $\pi(X)$ to denote the plausibility that proposition $X$ is true.)
+
+Using numbers allows us to be precise, and defines an order: by convention he takes more confident degrees of belief to be represented by larger numbers.
+
+2.  Qualitative correspondence with common sense.
+
+Humans make inferences and predictions all the time without knowing probability theory, and Jaynes claims that we use the following (progressively weaker) rules:
+
+(i) If A implies B, and we learn that B is true, then we become more confident that A is true[^1].
+
+(ii) If A makes B more likely, and we learn that B is true, then we become more confident that A is true.
+
+(iii) If A makes B more likely, and we become more confident that B is true, then we become more confident that A is true.
+
+[^1]: Strictly, after learning B is true, our new confidence in A is at least as great as it was before. But typically it will be larger.
+
+If a cold causes sneezing and we observe sneezing, then we become more confident that this person has a cold. Someone having committed a crime makes it more likely that their fingerprints are at the crime scene; if we learn that the defendant's fingerprints are at the crime scene, we become more suspicious. In both cases it's not clear by how much more confident we should get - intuitively it depends on whether there could be another explanation for the observed fact - and it's the question of "by how much more confident?" that this theory is intended to answer.
+
+When you make an inference, it's a fun exercise to test in your mind whether the way you update your beliefs can be mapped onto one of the above rules.
+
+3.  Consistency: equivalent states of knowledge should have equivalent probability assignments, and we should use all available information when calculating a confidence.
+
+One thing to note here is that how plausible something is very much depends on the relevant information you have: two perfectly rational people may wildly disagree on how plausible something is, simply because they have seen different evidence. (Although, if they learn that a rational person strongly disagrees with them, this is new information which would cause them to update their beliefs.)
+
+Therefore it only makes sense to talk about the plausibility of a proposition $A$ in the light of some specified information, $I$; $\pi(A)$ doesn't make sense, only $\pi(A|I)$.
+
+From those three rules (and several lectures' worth of reasoning), you can derive the following rules that must be satisfied for any valid set of plausibilities for any group of propositions $A,\ B,...$ in the light of any particular information $I$:
+
+1.  $0 \leq \pi(A|I) \leq 1$, with 0 meaning impossible and 1 meaning guaranteed (on the basis of the information I),
+2.  $\pi(A\text{ and }B|I) = \pi(A|I)\times\pi(B|A\text{ and }I)$ [^2],
+3.  $\pi(A \text{ or } B|I) = \pi(A|I)+\pi(B|I)-\pi(A\text{ and }B|I)$.
+
+[^2]: Note that this isn't a definition of conditional plausibility (all plausibilities are conditional), but rather a consequence of the axioms.
+
+In other words, exactly the rules of probability theory. There are of course many more details, but the main result is that if you are doing probability theory, you are also doing plausibility theory.
+
+Because the derivation of plausibility theory is completely indifferent as to why you are uncertain, it can be used to model any kind of uncertainty, be it from the free will of others, from physical non-determinism, or from ignorance.
+
+------------------------------------------------------------------------
+
+Things I could have included:
+
+-   How come some "repeated" trials do have stable long term frequencies, e.g. dice rolls, lifespans, random number generators? In those cases doesn't it make sense to define probabilities as long term frequencies?
+
+-   When does the probabilities $\equiv$ plausibilities interpretation lead to materially different conclusions/decisions than the probabilities $\equiv$ long term frequency interpretation?
+
+-   Priors: if the information $I$ doesn't contain large amounts of relevant historical data, what is $\pi(A|I)$?

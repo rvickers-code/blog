@@ -10,6 +10,12 @@ website:
         text: Home
       - about.qmd
 
+collections:
+  posts:
+    type: posts
+    path: posts
+    sort: date
+
 format:
   html:
     theme:
