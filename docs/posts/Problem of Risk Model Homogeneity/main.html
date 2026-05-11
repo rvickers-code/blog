@@ -271,7 +271,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="a-run-of-the-simulation">A Run of the Simulation</h2>
 <p>I ran the simulation for 5000 time steps (months), with 2 risk models and a random number generation seed of 2. I modified the code to accept a seed, as the command line argument randomseed wasn’t actually used. Specifically I ran <code>python start.py --save_iterations 4999 --randomseed 2</code> with the <code>max_iter</code> attribute of the config file set to 5000, on the branch of <code>isle</code> found on my github: {}{}</p>
 <p>They include some helpful logging of simulations, which I used to produce the following plots. Here is a plot of the number of operating insurers and reinsurers over time:</p>
-<div id="4eb59e83" class="cell" data-execution_count="1">
+<div id="96f96e33" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -336,7 +336,7 @@ window.Quarto = {
 </div>
 </div>
 <p>(Note I discarded the first 1200 time steps because transient {}{}). This looks quite volatile, with lots of large multiple bankruptcy events. Here is a plot of cumulative bankruptcies and the twenty most severe catastrophes in the underestimated regions:</p>
-<div id="95f02413" class="cell" data-execution_count="2">
+<div id="26720f97" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cum_bankrupt <span class="op">=</span> np.array(logs[<span class="st">'cumulative_bankruptcies'</span>])</span>
@@ -375,7 +375,7 @@ window.Quarto = {
 <p>As we would expect, this plot shows that severe, underestimated catastrophes often line up with bankruptcy events, but not always. Perhaps if the catastrophe occurs after a long period with no catastrophes, insurers and reinsurers have built up enough capital to take the hit.</p>
 <p>One thing I will explore in detail in this article is whether insurers hold enough capital to cover the <span class="math inline">\(99.5\%\)</span>-ile of losses. As a crude way of estimating insurer stability, consider the following model: each insurer independently has a constant probability <span class="math inline">\(p\)</span> of going bankrupt each time step. (Firstly, insurer bankruptcies are clearly not independent as a big catastrophe will lead to lots of bankruptcies. Secondly, in the absence of knowledge of catastrophe times, a time-constant probability of bankruptcy is our state of knowledge though.)</p>
 <p>In this model, the number of bankruptcies <span class="math inline">\(B_t\)</span> during time step <span class="math inline">\(t\)</span> is distributed as <span class="math inline">\(B_t\sim\text{Binom}(O_t,p)\)</span> where <span class="math inline">\(O_t\)</span> is the number of firms operating at the start of the time step. Considering each time step as an independent observation, the maximum likelihood estimator of <span class="math inline">\(p\)</span> is just <span class="math inline">\(\sum(B_t)/\sum(O_t)\)</span>, which the following code computes:</p>
-<div id="2f60a599" class="cell" data-execution_count="3">
+<div id="2115632c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## I lump together insurers and reinsurers here because their logs do the same for bankruptcies</span></span>
@@ -388,7 +388,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Which is the probability per month of going bankrupt. On a yearly basis:</p>
-<div id="ebf8bd3e" class="cell" data-execution_count="4">
+<div id="af6f3ae9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>(<span class="dv">1</span><span class="op">-</span>p_bankrupt_MLE)<span class="op">**</span><span class="dv">12</span>)<span class="sc">:.5f}</span><span class="ss">%"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -586,7 +586,7 @@ D|C \sim \text{Beta}(1,\frac{1}{C}-1)
 \end{align}\]</span></p>
 <p>They truncate the power law at the upper bound which is interesting. Clearly the expected fraction of house value lost can’t be more than one, but we can imagine storms even stronger than the storm that “only just” destroys all the houses, so perhaps they could have put a lump of probability mass at <span class="math inline">\(C=1\)</span> to represent the probability of storms above the “destroy all the houses” threshold. This is a minor point though, as it doesn’t seem that the exact catastrophe model is particularly important.</p>
 <p>The above indeed gives <span class="math inline">\(\text{E}[D|C]=1/(1/C-1+1)=C\)</span>. Here is a visualisation of the relationship between <span class="math inline">\(D\)</span> and <span class="math inline">\(C\)</span>:</p>
-<div id="dca91626" class="cell" data-execution_count="5">
+<div id="6473bbaa" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -617,7 +617,7 @@ D|C \sim \text{Beta}(1,\frac{1}{C}-1)
 </div>
 </div>
 <p>We see that for severe catastrophes most of the probability is concentrated near <span class="math inline">\(D=1\)</span>. To be more precise, consider the following graph for the standard deviation of claims as a function of catastrophe intensity:</p>
-<div id="9a82456c" class="cell" data-execution_count="6">
+<div id="ef1d1918" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1054,7 +1054,7 @@ q &amp;= \text{Upper quantile of catastrophe severity distribution} \\
 <h4 class="anchored" data-anchor-id="my-calculation-of-var-compared-to-theirs">My calculation of VaR compared to theirs</h4>
 <p>I consider different sets of assumptions and policy portfolios, I compare their computed VaR with my Monte Carlo approximation.</p>
 <p>From command prompt, I ran <code>python start.py --save_iterations 1250</code>. I had to change a bit of code for choosing the time of saving a pickle dump of the simulation. This simulation had the default settings in <code>isleconfig.py</code> except for <span class="math inline">\(1300\)</span> time steps, since they say in the paper that the steady state of the simulation is reached after <span class="math inline">\(1200\)</span> steps. The following code loads the saved simulation:</p>
-<div id="e881ebbd" class="cell" data-execution_count="7">
+<div id="1916c011" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>

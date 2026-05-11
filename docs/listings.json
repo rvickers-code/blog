@@ -2,9 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/Interpretation of Probability/prob_int_5.5.26.html",
-      "/posts/Problem of Risk Model Homogeneity/main.html",
-      "/posts/Problem of Risk Model Homogeneity/scripts/ins_abm_scrap.html"
+      "/posts/Interpretation of Probability/main.html",
+      "/posts/Problem of Risk Model Homogeneity/main.html"
     ]
   }
 ]
