@@ -4,3 +4,7 @@
 !docs/**
 !README.md
 !.gitignore
+!.nojekyll
+
+/.quarto/
+**/*.quarto_ipynb
