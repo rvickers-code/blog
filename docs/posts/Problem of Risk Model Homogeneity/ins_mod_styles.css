@@ -1,0 +1,21 @@
+.stack {
+  border-left: 3px solid #4CAF50; /* green (level 1) */
+  margin-left: 10px;
+  padding-left: 10px;
+  font-family: monospace;
+}
+
+/* level 2 */
+.stack .stack {
+  border-left-color: #2196F3; /* blue */
+}
+
+/* level 3 */
+.stack .stack .stack {
+  border-left-color: #4CAF50; /* back to green */
+}
+
+/* level 4 */
+.stack .stack .stack .stack {
+  border-left-color: #2196F3; /* back to blue */
+}
