@@ -324,7 +324,7 @@ window.Quarto = {
 <h1>My Run of the Simulation</h1>
 <p>My run of the simulation was produced using my fork of their code, which is on my github at <a href="https://github.com/rvickers-code/isle">github.com/rvickers-code/isle</a>, by running the following in the command line:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python start.py -<span class="at">-max_time</span> 20000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9c43cc48" class="cell" data-execution_count="1">
+<div id="1171f7dd" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -336,7 +336,7 @@ window.Quarto = {
 </details>
 </div>
 <p>At the end of each run, a pickle dump of the <code>InsuranceSimulation</code> object, lots of logging, and the catastrophe timeline gets saved. This cell loads them in:</p>
-<div id="cdc80b57" class="cell" data-execution_count="2">
+<div id="e3e42226" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>date_time <span class="op">=</span> <span class="st">'26-07-22-15-04'</span></span>
@@ -354,7 +354,7 @@ window.Quarto = {
 </details>
 </div>
 <p>I discard the first 5000 times steps in all the following analysis, to allow the simulation to lose the influence of its initial conditions:</p>
-<div id="3d8268c3" class="cell" data-execution_count="3">
+<div id="e33a2d20" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t_transient <span class="op">=</span> <span class="dv">5000</span></span>
@@ -365,7 +365,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Each risk model underestimates catastrophe severity by factor 2 in one region, and overestimates by factor 2 in the others:</p>
-<div id="c643d37d" class="cell" data-execution_count="4">
+<div id="3aa0cd3a" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"sim.inaccuracy = </span><span class="sc">{</span>sim<span class="sc">.</span>inaccuracy<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -493,7 +493,7 @@ Figure&nbsp;2
 </div>
 <p>Judging by the uptrending cash lines, most insurers are profitable but eventually leave the market voluntarily. An insurer voluntarily leaves when, for more than 24 time steps, it either underwrites hardly any contracts (&lt; 4) or it is barely using its capital (roughly if its cash &gt; 2.5 times its solvency capital requirement). (See the <code>MetaInsuranceOrg.market_permanency</code> method).</p>
 <p>Let’s enumerate the final states of insurers:</p>
-<div id="89b654b0" class="cell" data-execution_count="7">
+<div id="c459bc32" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>n_total <span class="op">=</span> <span class="dv">0</span></span>
@@ -585,7 +585,7 @@ Figure&nbsp;3
 <li>Highly profitable insurers paid a higher dividend instead of exiting the market (currently it is always 40% of profit, if there was a profit)</li>
 </ol>
 <p>Let’s look at the profitability of insurers (that actually paid some claims):</p>
-<div id="f979b894" class="cell" data-execution_count="9">
+<div id="df379408" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_to_time_series(log):</span>
@@ -718,7 +718,7 @@ Figure&nbsp;5
 </div>
 </div>
 <p>Comparing this with the corresponding graph above for insurers (<a href="#fig-insurers-cash" class="quarto-xref">Figure&nbsp;2</a>), it’s clear the reinsurers have a hugely variable experience. Also, most of them exit the market as soon as possible:</p>
-<div id="35053707" class="cell" data-execution_count="12">
+<div id="6d9fde21" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>n_total <span class="op">=</span> <span class="dv">0</span></span>
@@ -901,7 +901,7 @@ Industry Net Loss Ratio = 1.02</code></pre>
 <h2 class="anchored" data-anchor-id="bankruptcy-risk">Bankruptcy Risk</h2>
 <p>One thing I will explore in this article is whether insurers hold enough capital to cover the <span class="math inline">\(99.5^{\text{th}}\)</span>-percentile of losses. The simplest way to model this is to imagine that each insurer independently has a probability <span class="math inline">\(p\)</span> of going bankrupt each time step. Then if there are <span class="math inline">\(O_t\)</span> firms operational at the start of a time step, the number of bankruptcies <span class="math inline">\(B_t\)</span> will be distributed as <span class="math inline">\(B_t\sim\text{Binom}(O_t,p)\)</span>.</p>
 <p>Considering each time step as an independent observation, the maximum likelihood estimator of <span class="math inline">\(p\)</span> is then <span class="math inline">\(\sum(B_t)/\sum(O_t)\)</span>, which the following code computes:</p>
-<div id="c1667557" class="cell" data-execution_count="16">
+<div id="822daa11" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n_ins_bankrupt <span class="op">=</span> <span class="dv">0</span></span>
@@ -937,7 +937,7 @@ Yearly bankruptcy chance for reinsurers = 0.025%</code></pre>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Their goal is to estimate the impact of over-reliance on a few risk models, so it seems to me a misstep to set the margin of safety equal to the riskmodel inaccuracy, because at worst it means insurers are estimating risk accurately and in the other regions overestimate it by a factor of 4. Also it makes some VaR estimates greater than the value of each house:</p>
-<div id="d8ecf0e7" class="cell" data-execution_count="17">
+<div id="4e76aaaf" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take this firm because it has no reinsurance</span></span>
@@ -1052,7 +1052,7 @@ Figure&nbsp;9
 <p><span class="math display">\[S = \sum_{i=1}^NvD_i = v\sum_{i=1}^ND(C_i)\]</span></p>
 <p>where <span class="math inline">\(i\)</span> runs over the catastrophes that occur during the policy duration <span class="math inline">\(T\)</span>, and <span class="math inline">\(vD_i\)</span> is the corresponding claim (risk factors are all <span class="math inline">\(1\)</span> so every catastrophe leads to a claim). Because the time between catastrophes is exponentially distributed with rate <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(N \sim \text{Poi}(\lambda T)\)</span>. So <span class="math inline">\(S\)</span> has a compound Poisson distribution, and the expectation of total claims from a policy is:</p>
 <p><span class="math display">\[E[S] = vE[N]E[D] = v(\lambda T)E[C]\]</span> Where <span class="math inline">\(v=1000\)</span>, <span class="math inline">\(\lambda = 0.03 \text{ year}^{-1}\)</span>, <span class="math inline">\(T = 1 \text{ year}\)</span> and <span class="math inline">\(E[C] = 0.4\)</span>.</p>
-<div id="d588bd92" class="cell" data-execution_count="19">
+<div id="e84962dc" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="fl">1.</span> <span class="co"># easier than 1000</span></span>
@@ -1159,7 +1159,7 @@ Figure&nbsp;11
 </div>
 <p>From the right graph, it looks like reinsurance here transfers nearly all the volatility to the reinsurer. This may be the cause of the large difference in profitability - compare their loss ratios (<a href="#fig-insurer-loss-ratios" class="quarto-xref">Figure&nbsp;4</a> versus <a href="#fig-reinsurer-loss-ratios" class="quarto-xref">Figure&nbsp;8</a>).</p>
 <p>The probability of making a reinsurance claim given there was a catastrophe is:</p>
-<div id="f1bd606c" class="cell" data-execution_count="22">
+<div id="4c8e36d2" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.mean(agg_claims <span class="op">&gt;</span> deductible)</span>
@@ -1250,7 +1250,7 @@ Figure&nbsp;12
 <p>To see if their method of pricing is accurate, I need to the compute the expected value of claims:</p>
 <p><span class="math display">\[E[S] = E[\max(0,\sum_{i=1}^{n_C}\sum_{j=1}^{n_H}(vD_{ij}) - Q)]\]</span></p>
 <p>over the number of catastrophes that occur, the size of those catastrophes and the house damages from each catastrophe. The following function computes this:</p>
-<div id="31e5a5cf" class="cell" data-execution_count="24">
+<div id="f1ee50cf" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_reins_premium(n_houses, n_sim <span class="op">=</span> <span class="bu">int</span>(<span class="fl">1e4</span>), deductible_frac <span class="op">=</span> <span class="fl">0.3</span>):</span>
@@ -1330,7 +1330,7 @@ Figure&nbsp;13
 </div>
 </div>
 <p>Which shows that their method is surprisingly good - perhaps there is a reason why their computation makes sense that I don’t understand. (Their method is certainly much faster, and the simple claims generating process in this model is probably what makes a method like theirs possible.) However, for low reinsurance deductibles, their premium is too low:</p>
-<div id="5564ece1" class="cell" data-execution_count="26">
+<div id="84a6aef7" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average the ratio to smooth Monte Carlo variation:</span></span>
@@ -1485,7 +1485,7 @@ F_Y(q_{0.995}^{(1)}) &amp;= p_0F_0(q_{0.995}^{(1)})+p_1\times 0.995+p_2F_2(q_{0.
 <li><code>excess_capital</code> is the amount by which the insurer’s current cash exceeds its SCR.</li>
 </ol>
 <p>I use their code from <code>MetaInsuranceOrg.iterate</code> to compute these for an insurance firm:</p>
-<div id="96929382" class="cell" data-execution_count="27">
+<div id="27066aaa" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>op_firms <span class="op">=</span> [ins <span class="cf">for</span> ins <span class="kw">in</span> sim.insurancefirms <span class="cf">if</span> ins.operational]</span>
@@ -1529,7 +1529,7 @@ insurer policies by region: [524, 135, 391, 677]</code></pre>
 </div>
 <p><code>acceptable_by_category</code> is so lopsided because this insurer underestimates risks in the 4th region (see its riskmodel inaccuracy), and they do the 5th power step that makes it more lopsided.</p>
 <p>Let’s check my formula for <code>var_per_risk_per_categ</code>:</p>
-<div id="2402d309" class="cell" data-execution_count="28">
+<div id="370b03ee" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">2</span></span>
@@ -1550,7 +1550,7 @@ insurer policies by region: [524, 135, 391, 677]</code></pre>
 <h3 class="anchored" data-anchor-id="my-calculation-of-var-compared-to-theirs">My calculation of VaR compared to theirs</h3>
 <p>I will test the validity of these approximations by comparing the SCR for each company as they compute it to a full Monte Carlo simulation.</p>
 <p>I use the firms who are still active at the end of the simulation, as these are the easiest to work with:</p>
-<div id="471fa1b4" class="cell" data-execution_count="29">
+<div id="34d0e16d" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>op_firms <span class="op">=</span> [ins <span class="cf">for</span> ins <span class="kw">in</span> sim.insurancefirms <span class="cf">if</span> ins.operational]</span>
